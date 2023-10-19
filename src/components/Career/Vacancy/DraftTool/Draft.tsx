@@ -63,7 +63,7 @@ function DraftEditor(props:datas) {
             onToggle={toggleInlineStyle}
           />
         </div>
-        <div className="editor h-[150px] xl:h-[200px] "  >
+        <div className="editor h-[150px] xl:h-[200px] overflow-hidden "  >
           <Editor
         
             editorState={editorState}

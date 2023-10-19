@@ -37,8 +37,6 @@ const Vacancylist = () => {
       });
 
       setData(filteredDepart);
-      console.log("hiiiiiiiiiii")
-      console.log(filteredDepart)
     }
   };
 
@@ -61,8 +59,6 @@ const Vacancylist = () => {
           : null;
       });
       setData(filteredData);
-      console.log("hiiiiiiiiiii")
-      console.log(filteredData)
     }
   };
 
@@ -84,8 +80,6 @@ const Vacancylist = () => {
       });
 
       setData(filteredLocation);
-      console.log("hiiiiiiiiiii")
-      console.log(filteredLocation) 
     }
   };
   const PerPageChange = (value: any) => {

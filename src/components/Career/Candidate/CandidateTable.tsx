@@ -13,6 +13,7 @@ import Paper, { PaperProps } from "@mui/material/Paper";
 import Draggable from "react-draggable";
 import TextField from "@mui/material/TextField";
 import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
+import Candidatelists from "../../../Mock/Candidatelists";
 
 interface table {
   entries: number;
@@ -38,9 +39,25 @@ const CandidateTable: React.FC<table> = (props) => {
   const [otherFiles, setOtherFiles] = React.useState<boolean>(false);
   const [otherFilesValue, setOtherFilesValue] = React.useState("");
   const [edit, setEdit] = React.useState<boolean>(false);
-  const [editValue, setEditValue] = React.useState(0);
+  // const [editValue, setEditValue] = React.useState(0);
   const [deleteRow, setDeleteRow] = React.useState<number | null>(null);
   const [afterDeleted, setAfterDeleted] = React.useState(props.datas);
+  const [editObj,setEditObj]=React.useState({
+    id:"",
+    image:"",
+    dob:"",
+    address:"",
+    linkedInUrl:"",
+    maritalStatus:"",
+    currentJob:"",
+    currentCompany:"",
+    jobTitle:"",
+    salary:"",
+    education:"",
+    coverLetter:"",
+    cv:"",
+    otherFiles:"",
+  })
 
   const Cover = [
     {
@@ -76,11 +93,24 @@ const CandidateTable: React.FC<table> = (props) => {
   const otherFilesClickClose = () => {
     setOtherFiles(false);
   };
+  // ======================================================================
+  const editedObj = (id:any) =>{
+  const candidateObj = Candidatelists.find((a) => (a.id == id))
+  }
+
+  const handleChange = (event:any) =>{
+ let field = event.target.name;
+ let filedValue = event.target.value
+
+ setEditObj({...editObj,[field]:filedValue})
+ console.log(editObj)
+  }
+
   // edit
   const editClickOpen = (row: number) => {
     setEdit(true);
-    setEditValue(row);
-    console.log(row);
+    editedObj(row)
+   
   };
   
   const editClickClose = () => {
@@ -91,7 +121,7 @@ const CandidateTable: React.FC<table> = (props) => {
     console.log(`Upadte this row with ID: ${row}`);
     editClickClose();
   };
-
+// ======================================================================================
   // delete
   const deleteClickOpen = (row: number) => {
     setDeleteRow(row);
@@ -294,6 +324,9 @@ const CandidateTable: React.FC<table> = (props) => {
           <Button onClick={otherFilesClickClose}>Cancel</Button>
         </DialogActions>
       </Dialog>
+
+{/* ----------------------------------------------------------------------- */}
+
       {/* edit Dialog */}
       <Dialog
         open={edit}
@@ -313,25 +346,79 @@ const CandidateTable: React.FC<table> = (props) => {
           update
         </DialogTitle>
         <DialogContent>
-          <TextField label="Image" fullWidth margin="normal" />
-          <TextField label="DOB" fullWidth margin="normal" />
-          <TextField label="Address" fullWidth margin="normal" />
-          <TextField label="Linked In URL" fullWidth margin="normal" />
-          <TextField label="Marital Status" fullWidth margin="normal" />
-          <TextField label="Current Job" fullWidth margin="normal" />
-          <TextField label="Current Job" fullWidth margin="normal" />
-          <TextField label="Job Title" fullWidth margin="normal" />
-          <TextField label="Salary" fullWidth margin="normal" />
-          <TextField label="Education" fullWidth margin="normal" />
-          <TextField label="COVER LETTER" fullWidth margin="normal" />
-          <TextField label="CV" fullWidth margin="normal" />
-          <TextField label="OTHER FILES" fullWidth margin="normal" />
+          <TextField label="Image" fullWidth margin="normal" 
+          // value={editObj.img}
+          name="image"
+          onChange={handleChange}
+          />
+          <TextField label="DOB" fullWidth margin="normal" 
+          // value={editObj.dob}
+          name="dob"
+          onChange={handleChange}
+          />
+          <TextField label="Address" fullWidth margin="normal" 
+          // value={editObj.address}
+          name="address"
+          onChange={handleChange} 
+          />
+          <TextField label="Linked In URL" fullWidth margin="normal" 
+          // value={editObj.linkedInUrl}
+          name="linkedInUrl"
+          onChange={handleChange}
+          />
+          <TextField label="Marital Status" fullWidth margin="normal" 
+          // value={editObj.maritalStatus}
+          name="maritalStatus"
+          onChange={handleChange}
+          />
+          <TextField label="Current Job" fullWidth margin="normal" 
+          // value={editObj.currentJob}
+          name="currentJob"
+          onChange={handleChange}
+          />
+          <TextField label="Current Company" fullWidth margin="normal" 
+          // value={editObj.currentCompany}
+          name="currentCompany"
+          onChange={handleChange}
+          />
+          <TextField label="Job Title" fullWidth margin="normal" 
+          // value={editObj.jobTitle}
+          name="jobTitle"
+          onChange={handleChange}
+          />
+          <TextField label="Salary" fullWidth margin="normal" 
+          // value={editObj.salary}
+          name="salary"
+          onChange={handleChange}
+          />
+          <TextField label="Education" fullWidth margin="normal" 
+          // value={editObj.education}
+          name="education"
+          onChange={handleChange}
+          />
+          <TextField label="COVER LETTER" fullWidth margin="normal" 
+          // value={editObj.covarLetter}
+          name="coverLetter"
+          onChange={handleChange}
+          />
+          <TextField label="CV" fullWidth margin="normal" 
+          // value={editObj.cv}
+          name="cv"
+          onChange={handleChange}
+          />
+          <TextField label="OTHER FILES" fullWidth margin="normal" 
+          // value={editObj.otherFiles}
+          name="otherFiles"
+          onChange={handleChange}
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={editClickClose}>Update</Button>
           <Button onClick={editClickClose}>Cancel</Button>
         </DialogActions>
       </Dialog>
+
+      {/* ------------------------------------------------------------------ */}
 
       {/* delete Dialog */}
       <Dialog

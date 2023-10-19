@@ -1,0 +1,50 @@
+.custom-list {
+  list-style-type: circle;
+ 
+}
+.notification-circle{
+  width: 10px;
+  height: 10px;
+  background-color: rgb(28, 161, 121);
+  border-radius:50%;
+  position: absolute;
+  top:  20px; 
+  margin-left:11px;
+  transform: scale(1);
+	box-shadow: 0 0 0 0 rgb(43, 192, 147,1);
+	animation: pulse-green 1s infinite;
+}
+@keyframes pulse-green {
+	0% {
+		transform: scale(0.7);
+		box-shadow: 0 0 0 0 rgb(43, 192, 147,0.25);
+	}
+	
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgb(43, 192, 147,0.25);
+    
+	}
+	
+	100% {
+		transform: scale(1);
+		box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
+	}
+}
+@media screen and (min-width:1441px)and (max-width:2560px){
+	.notification-circle{
+		top:20px;
+		margin-left: 10px;
+
+	}
+	
+}
+.bullet-list {
+  list-style-type: circle; 
+  padding-left: 20px;  
+	 
+ 
+}
+
+
+

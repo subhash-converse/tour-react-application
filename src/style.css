@@ -1,0 +1,11 @@
+/* @font-face {
+  font-family: 'Open Sans';
+  src: url('path-to-your-font/OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply the font to a specific class or element */
+/* .my-text {
+  font-family: 'Open Sans', sans-serif;
+} */
